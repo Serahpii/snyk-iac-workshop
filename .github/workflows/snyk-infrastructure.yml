@@ -32,4 +32,4 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          file: big_data.tf
+          file: .
