@@ -33,3 +33,4 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           file: .
+          args: --severity-threshold=high
