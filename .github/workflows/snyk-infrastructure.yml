@@ -10,7 +10,7 @@
 # For more examples, including how to limit scans to only high-severity issues
 # and fail PR checks, see https://github.com/snyk/actions/
 
-name: Snyk Infrastructure as Code
+name: Snyk IAC Security Gate
 
 on:
   push:
@@ -33,4 +33,8 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           file: .
-          args: --severity-threshold=high
+          args: --severity-threshold=high --fail-on=upgradable
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: snyk.sari
